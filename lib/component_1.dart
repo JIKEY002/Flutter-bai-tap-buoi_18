@@ -1,5 +1,42 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+List<Map<String, dynamic>> generateFruitsJson(int count) {
+  final List<String> fruitNames = [
+    'Apple',
+    'Banana',
+    'Orange',
+    'Grapes',
+    'Mango',
+    'Pineapple',
+    'Watermelon',
+    'Strawberry',
+    'Cherry',
+    'Peach',
+    'Lemon',
+    'Avocado',
+    'Blueberry',
+    'Coconut',
+    'Kiwi',
+  ];
+
+  final Random random = Random();
+  List<Map<String, dynamic>> fruits = [];
+
+  for (int i = 0; i < count; i++) {
+    final name = fruitNames[random.nextInt(fruitNames.length)];
+    final price = (1 + random.nextDouble() * 9).toStringAsFixed(
+      2,
+    ); // $1.00 - $10.00
+    final quantity = random.nextInt(100) + 1; // 1 - 100
+
+    fruits.add({'name': name, 'price': '\$$price', 'quantity': quantity});
+  }
+
+  return fruits;
+}
 
 class LayoutWidgetStarted extends StatelessWidget {
   const LayoutWidgetStarted({super.key});
@@ -246,6 +283,102 @@ class LayoutWidgetHome extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class LayoutWidgetItem extends StatelessWidget {
+  const LayoutWidgetItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> fruits = generateFruitsJson(50);
+
+    return CustomScrollView(
+      slivers: [
+        SliverAppBar(leading: Icon(Icons.arrow_back)),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(childCount: fruits.length, (
+            context,
+            index,
+          ) {
+            final fruit = fruits[index];
+            return Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 25),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromARGB(50, 158, 158, 158),
+                          spreadRadius: 0,
+                          blurRadius: 2,
+                          offset: Offset(0, 1), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              width: 100,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                color: Color(0XFF5b913b),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                            SizedBox(width: 20),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  fruit['name'],
+                                  style: TextStyle(
+                                    fontFamily: "Montserrat",
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  "${fruit['quantity']} ready stock",
+                                  style: TextStyle(
+                                    fontFamily: "Montserrat",
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  fruit['price'],
+                                  style: TextStyle(
+                                    fontFamily: "Montserrat",
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        FaIcon(FontAwesomeIcons.heart, size: 30),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                ],
+              ),
+            );
+          }),
+        ),
+      ],
     );
   }
 }
