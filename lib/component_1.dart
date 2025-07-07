@@ -308,7 +308,7 @@ class LayoutWidgetItem extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 25),
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(15),
