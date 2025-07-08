@@ -47,9 +47,14 @@ class LayoutWidgetStarted extends StatelessWidget {
       children: [
         Expanded(
           flex: 3,
-          child: ClipPath(
-            clipper: BottomWaveClipper(),
-            child: Container(color: Color(0XFF5b913b)),
+          child: Stack(
+            children: [
+              Container(color: Color(0xFFf7f7f7)),
+              ClipPath(
+                clipper: BottomWaveClipper(),
+                child: Container(color: Color(0XFF5b913b)),
+              ),
+            ],
           ),
         ),
         Expanded(
@@ -175,7 +180,7 @@ class LayoutWidgetHome extends StatelessWidget {
               Positioned(
                 bottom: 20,
                 left: 20,
-                child: Container(
+                child: SizedBox(
                   width: 250,
                   child: Text(
                     "Buy Orange 10 Kg Get discount 25%",
@@ -206,7 +211,7 @@ class LayoutWidgetHome extends StatelessWidget {
           ),
 
           SizedBox(height: 30),
-          Container(
+          SizedBox(
             height: 400,
             child: GridView(
               physics: const NeverScrollableScrollPhysics(),
