@@ -31,6 +31,7 @@ class Layout2WidgetExplore extends StatelessWidget {
                                 color: Colors.white,
                                 fontSize: 28,
                                 fontWeight: FontWeight.bold,
+                                height: 0,
                               ),
                             ),
                             SizedBox(height: 10),
@@ -545,6 +546,5 @@ class CardBestSell extends StatelessWidget {
         ),
       ],
     );
-    ;
   }
 }

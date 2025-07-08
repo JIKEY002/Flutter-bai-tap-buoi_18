@@ -6,7 +6,7 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: SafeArea(child: Layout2WidgetHome())),
+      home: Scaffold(body: SafeArea(child: LayoutWidgetStarted())),
     ),
   );
 }
