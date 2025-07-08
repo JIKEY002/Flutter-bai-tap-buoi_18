@@ -213,7 +213,6 @@ class Layout2WidgetHome extends StatelessWidget {
               ),
             ],
           ),
-
           SizedBox(height: 30),
           SizedBox(
             height: 200,
@@ -316,14 +315,11 @@ class Layout2WidgetHome extends StatelessWidget {
             ],
           ),
           SizedBox(height: 20),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CardBestSell(text: "Plant"),
-
               CardBestSell(text: "Lamp"),
-
               CardBestSell(text: "Chal"),
             ],
           ),
@@ -524,7 +520,6 @@ class CardBestSell extends StatelessWidget {
                     children: [
                       Icon(Icons.star, color: Colors.amber, size: 14),
                       Icon(Icons.star, color: Colors.amber, size: 14),
-
                       Icon(Icons.star, color: Colors.amber, size: 14),
                       Icon(Icons.star, color: Colors.amber, size: 14),
                       Icon(Icons.star, color: Colors.amber, size: 14),
