@@ -301,7 +301,12 @@ class LayoutWidgetItem extends StatelessWidget {
 
     return CustomScrollView(
       slivers: [
-        SliverAppBar(leading: Icon(Icons.arrow_back)),
+        SliverAppBar(
+          leading: Padding(
+            padding: const EdgeInsets.all(20),
+            child: FaIcon(FontAwesomeIcons.arrowLeftLong),
+          ),
+        ),
         SliverList(
           delegate: SliverChildBuilderDelegate(childCount: fruits.length, (
             context,
